@@ -1,0 +1,297 @@
+<style type="text/css">
+  .p-l-10{
+    padding-left: 10px!important;
+  }
+  .m-t-20{
+    margin-top:20px!important;
+  }
+  .m-t-50{
+    margin-top: 50px!important;
+  }
+  .no-border{
+    border:0px!important;
+  }
+  .card-img{
+    min-height: 200px!important;
+  }
+  #map{
+    max-height: 800px!important;
+  }
+  .prop{
+    float: none!important;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    display: none
+  }
+
+  .wht-cont{
+    margin:auto;
+  }
+
+  body{
+      height:100%;
+  }
+  .container {
+      display:table;
+      width: 100%;
+      /*padding: 50px 0 0 0; set left/right padding according to needs*/
+      box-sizing: border-box;
+  }
+
+  #card-container{
+    width: 100%;
+    margin: auto !important;
+    display: block;
+    height: 100%;
+    position: relative;
+    list-style-type: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .rotate-left {
+    transform: rotate(30deg) scale(0.8);
+    transition: 1s;
+    /*margin-left: 100px;*/
+    cursor: e-resize;
+    opacity: 0;
+    z-index: 10;
+  }
+  .rotate-right {
+    transform: rotate(-30deg) scale(0.8);
+    transition: 1s;
+    opacity: 0;
+    /*margin-left: -100px;*/
+    cursor: w-resize;
+    z-index: 10;
+  }
+  .avatar {
+    background: #222;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-size: auto 160% !important;
+    background-position: center;
+   background-repeat: no-repeat;
+  }
+  .like {
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 2px solid green;
+    color: green;
+    text-transform: uppercase;
+    font-size: 15px;
+    position: absolute;
+    top: 10%;
+    right: 30%;
+    text-shadow: none;
+  }
+  .dislike {
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 2px solid red;
+    color: red;
+    text-transform: uppercase;
+    font-size: 15px;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    text-shadow: none;
+  }
+</style>
+
+<!-- Page Content -->
+<div id="page-content-search">
+  <div class="container">
+    <div class="wide_container_2">
+      <div class="tabs">
+       <!--  <header class="col-md-8 col-xs-12 no-pad">
+          <div class="location-map col-sm-4 col-xs-4">
+            <div class="input-group">
+              <input type="text" class="form-control" id="address-map" name="address" placeholder="Dirección">
+              <i class="fa fa-search"></i>
+            </div>
+          </div>
+          <div class="select-block col-sm-2 col-xs-2">
+            <select name="search[hab]" class="selection form-control p-l-10">
+              <option value="-1">Habitaciones</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div class="select-block col-sm-2 col-xs-2 ">
+            <select name="search[operacion]" class="selection form-control p-l-10">
+              <option>Operacion</option>
+              <option>Venta</option>
+              <option>Arriendo</option>
+            </select>
+          </div>
+          <div class="select-block col-md-3 col-xs-4 no-border">
+
+          </div>
+
+        </header>
+        <ul class="tab-links col-md-4 col-xs-12">
+          <li class="col-lg-3 col-lg-offset-2 col-md-4 col-xs-4 no-pad no-border"></li>
+        </ul> -->
+        <!-- tab-links -->
+        <div class="tab-content">
+          <div id="tab1" class="tab" style="display: block;">
+            <div class="sidebar col-md-9 hidden-sm">
+              <!-- Map -->
+              <div id="map"></div>
+              <!-- end Map -->
+            </div><!-- sidebar -->
+            <div class="content col-sm-3 col-xs-12 m-t-20">
+              <div class="wide-2">
+                <div class="col-xs-12">
+                  <div class="row">
+                    <% @properties.each do |property| %>
+                      <div class="col-xs-12 prop" data-aprox='<%= property.direccion_aprox %>' data-lat='<%= property.lat %>' data-lng='<%= property.lng %>'>
+                        <div class="wht-cont">
+                          <div class="exp-img-2 card-img" style="background:url(<%= property.foto_principal.photo.url %>) center;background-size: cover;">
+                          </div>
+                          <div class="item-title">
+                            <h4><a href="<%= property_path(property) %>"><%= property.titulo %></a></h4>
+                            <p class="team-color"><%= property.direccion %></p>
+                            <div class="col-md-7 col-sm-7 col-xs-7">
+                              <p><%= property.tipo.capitalize %></p>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-5">
+                              <p><%= property.habitaciones %> Hab</p>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
+                            <div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
+                          </div>
+                          <hr>
+                          <div class="item-title btm-part">
+                            <div class="row">
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p><%= money_without_cents_and_with_symbol property.precio %></p>
+                              </div>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p class="team-color pull-right"><%= property.operacion.upcase %></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div><!-- end row -->
+                </div><!-- end container -->
+
+              </div>  <!-- end wide-2 -->
+            </div>  <!-- content -->
+          </div>
+        </div><!-- tab-content -->
+      </div><!-- tabs -->
+    </div>
+  </div>
+</div><!-- end Page Content -->
+
+
+ <% content_for :javascript do %>
+   <script type="text/javascript">
+
+     function changeLocation(){
+       removeMarker()
+       addMarker()
+       panToMarker()
+     }
+
+     function removeMarker(){
+       if(window.marker)
+         window.marker.setMap(null)
+     }
+
+     function addMarker(){
+        var latLng = new google.maps.LatLng(window.visibleLat, window.visibleLng)
+        if(window.aprox){
+          window.marker =  new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: window.map,
+            center: latLng,
+            radius: 200
+          });
+        }else{
+          window.marker = new google.maps.Marker({
+            position: latLng,
+            map: window.map
+          });
+        }
+     }
+
+     function hammerDown(){
+      var hammertime = new Hammer( $('.prop:first')[0] );
+      hammertime.on('swipeleft', function(ev) {
+        $('.prop:first').addClass('rotate-right').delay(700).fadeOut(1, function(){
+          hammertime.stop()
+          hammertime.destroy()
+          $('.prop:first').remove()
+          displayNext()
+        });
+
+        $('.prop:first').append('<div class="status dislike">No me gusta!</div>');
+
+      });
+
+      hammertime.on('swiperight', function(ev) {
+        $('.prop:first').addClass('rotate-left').delay(700).fadeOut(1,function(){
+          hammertime.stop()
+          hammertime.destroy()
+          $('.prop:first').remove()
+          displayNext()
+        });
+
+        $('.prop:first').append('<div class="status like">Me gusta!</div>');
+      });
+
+     }
+
+     function displayNext(){
+      $('.prop:first').fadeIn(1, function(){
+        hammerDown()
+        window.visibleLat = $(this).data('lat')
+        window.visibleLng = $(this).data('lng')
+        window.aprox = $(this).data('aprox')
+        changeLocation()
+      });
+     }
+
+     function panToMarker(){
+       window.map.setCenter(new google.maps.LatLng(window.visibleLat, window.visibleLng))
+     }
+
+     $(document).ready(function() {
+
+       window.marker = null
+
+       window.map = new google.maps.Map(document.getElementById('map'),{
+         zoom: 15,
+         zoomControl: true,
+         streetViewControl: true,
+         zoomControlOptions:{
+             position: google.maps.ControlPosition.RIGHT_TOP
+         },
+         streetViewControlOptions:{
+             position: google.maps.ControlPosition.RIGHT_TOP
+         },
+         scrollwheel: false,
+         center: new google.maps.LatLng(-33.5346575, -70.5957313)
+       });
+
+       displayNext()
+
+     });
+   </script>
+ <% end %>

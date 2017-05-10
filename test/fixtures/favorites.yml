@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  property: one
+  favorite_date: 2017-05-07 13:19:58
+
+two:
+  user: two
+  property: two
+  favorite_date: 2017-05-07 13:19:58

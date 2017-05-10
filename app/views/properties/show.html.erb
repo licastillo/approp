@@ -1,0 +1,301 @@
+<style type="text/css">
+  .padding-8 td{
+    padding: 8px !important;
+  }
+  .padding-8 th{
+    padding: 8px !important;
+    font-weight: normal;
+  }
+</style>
+<!-- Page Content -->
+<div id="page-property-content">
+  <div class="wide_container_3 carousel-full-width">
+    <div class="tabs">
+      <div class="tab-content">
+        <div id="tab1" class="tab active">
+          <!-- Owl carousel -->
+          <div id="owl-demo-2" class="owl-carousel owl-theme">
+            <% @property.property_photos.each do |pp| %>
+              <div class="item">
+                <div class="image" style="background: url(<%= pp.photo.url %>) center"></div>
+              </div>
+            <% end %>
+          </div>
+          <!-- End Owl carousel -->
+        </div>
+        <div id="tab2" class="tab">
+          <!-- Map -->
+          <div id="map4"></div>
+          <!-- end Map -->
+        </div>
+        <div id="tab3" class="tab">
+        </div>
+      </div>
+      <ul class="tab-links col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+        <li class="active col-xs-4"><a href="#tab1"><img src="/assets/camera-black.png" alt=""/>Fotos</a></li>
+        <li class="col-xs-4"><a href="#tab2" class="map4"><img src="/assets/map.png" alt=""/>Mapa</a></li>
+        <li class="col-xs-4"><a href="#tab3" class="street-view"><img class="street-view-image" src="/assets/street_view.png" alt=""/>Calle</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wide-2">
+    <div class="container">
+      <div class="row">
+        <aside class="pr-summary col-md-4 col-xs-12">
+          <form action="agent_profile.html">
+            <div class="col-lg-7 col-md-6 col-sm-3 col-xs-6 hl-bl">
+              <h2><%= money_without_cents_and_with_symbol @property.precio %></h2>
+              <h5 class="team-color"><%= "#{@property.tipo.upcase} EN #{@property.operacion.gsub('_',' ').upcase}" %></h5>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="row">
+                  <div class="col-lg-5 col-md-6 col-xs-6 cat-img">
+                    <img src="/assets/bedroom.png" alt="">
+                    <p><%= @property.habitaciones %> Hab.</p>
+                  </div>
+                  <div class="col-lg-7 col-md-6 col-xs-6 cat-img cat-img">
+                    <img src="/assets/bathroom.png" alt="">
+                    <p ><%= @property.banios %> Baños</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="row">
+                      <div class="col-lg-5 col-md-6 col-xs-6 cat-img">
+                        <img src="/assets/square.png" alt="">
+                        <p class="info_line"><%= @property.superficie_construida||@property.superficie_terreno %> m<span class="rank">2</span></p>
+                      </div>
+                      <div class="col-lg-7 col-md-6 col-xs-6 cat-img">
+                        <img src="/assets/garage.png" alt="">
+                        <p class="info_line"><%= @property.estacionamiento ? 'Con' : 'Sin' %> Estacionamiento</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="col-lg-5 col-md-6 col-xs-6 line"></div>
+                        <div class="col-lg-5 col-md-6 col-xs-6 line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="full-width">
+              </div>
+            </div>
+            <div class="picker-block col-md-12 col-sm-6 col-xs-12">
+
+              <div class="row">
+                <div class=" col-xs-12">
+                  <div class="circle">
+                    <img src="http://placehold.it/65x65" alt="">
+                  </div>
+                  <div class="team-info">
+                    <h3><%= @property.user.nombre_completo %></h3>
+                    <p class="team-color">Corredor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-6 col-xs-12">
+                <span class="ffs-bs">
+                  <button type="submit" class="btn btn-large btn-primary">Contactar</button>
+                </span>
+              </div>
+            </div>
+          </form>
+        </aside>
+        <div class="pr-info col-md-8 col-xs-12">
+          <h2><%= @property.titulo %></h2>
+          <div class="map-marker"></div>
+          <h5 class="team-color"><%= @property.direccion %> &nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa fa-eye"></i><%= @property.impressionist_count %></h5>
+          <p><%= @property.descripcion %></p>
+        </div>
+        <div class="pr-info col-md-8 col-xs-12">
+          <h3>Características de la Propiedad</h3>
+          <section class="block">
+            <ul class="submit-features">
+              <% Property::CARACTERISTICAS.each do |c| %>
+                <li class="col-md-4 col-xs-4 <%= 'nonexistent' if !(@property.caracteristicas.include? c.parameterize) %>"><div ><%= c %></div></li>
+              <% end %>
+            </ul>
+          </section>
+        </div>
+        <div class="pr-info col-md-8 col-xs-12">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Video Presentación:</h3>
+              <p><iframe src="https://www.youtube.com/embed/VD_cBxOhRMU"></iframe></p>
+            </div>
+          </div>
+        </div>
+        <div class="pr-info col-md-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Entorno</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-xs-12">
+              <table class="table table-stripped table-hover padding-8">
+                <thead>
+                  <tr>
+                    <th style="width:70%"><i class="fa fa-cutlery"></i> Restaurantes</th>
+                    <th style="width:30%">Distancia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @restaurantes.each do |r| %>
+                    <tr>
+                      <td><%= r.name %></td>
+                      <td><%= (@property.distance_to([r.lat, r.lng])*1000).truncate %> mts</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <table class="table table-stripped table-hover padding-8">
+                <thead>
+                  <tr>
+                    <th style="width:70%"><i class="fa fa-medkit"></i> Farmacias</th>
+                    <th style="width:30%">Distancia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @farmacias.each do |r| %>
+                    <tr>
+                      <td><%= r.name %></td>
+                      <td><%= (@property.distance_to([r.lat, r.lng])*1000).truncate %> mts</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <table class="table table-stripped table-hover padding-8">
+                <thead>
+                  <tr>
+                    <th style="width:70%"><i class="fa fa-shopping-cart"></i> Supermercados</th>
+                    <th style="width:30%">Distancia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @supermercados.each do |r| %>
+                    <tr>
+                      <td><%= r.name %></td>
+                      <td><%= (@property.distance_to([r.lat, r.lng])*1000).truncate %> mts</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-info col-md-12">
+          <hr>
+          <div class="row">
+            <section class="social-block col-sm-6 col-xs-12">
+              <ul class="social">
+                <li class="social-text">Compartir:</li>
+                <li><a class="facebook" href="https://www.facebook.com" target="blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="twitter" href="https://twitter.com" target="blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="google" href="https://www.google.com" target="blank"><i class="fa fa-google-plus"></i></a></li>
+                <li><a class="pinterest" href="https://www.pinterest.com" target="blank"><i class="fa fa-pinterest"></i></a></li>
+              </ul>
+            </section>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    //Google map for property page
+    function initialize() {
+
+        var latlng = {lat: <%= @property.lat %>, lng: <%= @property.lng %>};
+        var mapOptions = {
+          center: latlng,
+          zoom: 15,
+          streetViewControl: false,
+          scrollwheel: false
+        };
+        var map = new google.maps.Map(document.getElementById('map4'),
+          mapOptions);
+
+        var marker;
+
+        <% if !@property.direccion_aprox %>
+          marker = new MarkerWithLabel({
+            position: latlng,
+            map: map,
+            labelContent: '<div class="marker-loaded"><div class="map-marker"></div></div>',
+            labelClass: "marker-style"
+          });
+        <% else %>
+          marker =  new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: latlng,
+            radius: 200
+          });
+        <% end %>
+
+        <% @restaurantes.each do |r| %>
+          new google.maps.Marker({
+            position: {lat: <%= r.lat %>, lng: <%= r.lng %>},
+            map: map,
+            icon: '/assets/restaurant.png'
+          });
+        <% end %>
+
+        <% @supermercados.each do |s| %>
+          new google.maps.Marker({
+            position: {lat: <%= s.lat %>, lng: <%= s.lng %>},
+            map: map,
+            icon: '/assets/conveniencestore.png'
+          });
+        <% end %>
+
+        <% @farmacias.each do |f| %>
+          new google.maps.Marker({
+            position: {lat: <%= f.lat %>, lng: <%= f.lng %>},
+            map: map,
+            icon: '/assets/drugstore.png'
+          });
+        <% end %>
+
+        //resize for opeening and to get center of map
+        $('.map4').bind('click', function(){
+          google.maps.event.trigger(map4, 'resize');
+          map.panTo( new google.maps.LatLng(latlng) );
+        });
+
+        var panorama = new google.maps.StreetViewPanorama(document.getElementById('tab3'), {
+            position: {lat: <%= @property.lat %>, lng: <%= @property.lng %>}
+          });
+        map.setStreetView(panorama);
+        $('.street-view').bind('click', function(e){
+          setTimeout(function() {
+            google.maps.event.trigger(panorama, 'resize');
+          }, 400 );
+        });
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+<% end %>

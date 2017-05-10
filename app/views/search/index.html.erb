@@ -1,0 +1,198 @@
+<style type="text/css">
+  .p-l-10{
+    padding-left: 10px!important;
+  }
+  .m-t-20{
+    margin-top:20px!important;
+  }
+  .no-border{
+    border:0px!important;
+  }
+  .card-img{
+    min-height: 200px!important;
+  }
+  #map{
+    max-height: 800px!important;
+  }
+</style>
+
+<!-- Page Content -->
+<div id="page-content-search">
+  <div class="container">
+    <div class="wide_container_2">
+      <div class="tabs">
+        <header class="col-md-8 col-xs-12 no-pad">
+          <div class="location-map col-sm-4 col-xs-4">
+            <div class="input-group">
+              <input type="text" class="form-control" id="address-map" name="address" placeholder="Dirección">
+              <i class="fa fa-search"></i>
+            </div>
+          </div>
+          <div class="select-block col-sm-2 col-xs-2">
+            <select name="search[hab]" class="selection form-control p-l-10">
+              <option value="-1">Habitaciones</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div class="select-block col-sm-2 col-xs-2 ">
+            <select name="search[operacion]" class="selection form-control p-l-10">
+              <option>Operacion</option>
+              <option>Venta</option>
+              <option>Arriendo</option>
+            </select>
+          </div>
+          <div class="select-block col-md-3 col-xs-4 no-border">
+
+          </div>
+
+        </header><!-- end header -->
+        <ul class="tab-links col-md-4 col-xs-12">
+          <li class="col-lg-3 col-lg-offset-2 col-md-4 col-xs-4 no-pad no-border"></li>
+        </ul>
+        <!-- tab-links -->
+        <div class="tab-content">
+          <div id="tab1" class="tab" style="display: block;">
+            <div class="sidebar col-sm-4 col-xs-12">
+              <!-- Map -->
+              <div id="map"></div>
+              <!-- end Map -->
+            </div><!-- sidebar -->
+            <div class="content col-sm-8 col-xs-12 m-t-20">
+              <div class="wide-2">
+                <div class="col-xs-12">
+                  <div class="row">
+                    <% @properties.each do |property| %>
+                      <div class="col-md-4 col-sm-6 col-xs-6 prop">
+                        <div class="wht-cont">
+                          <div class="exp-img-2 card-img" style="background:url(<%= property.foto_principal.photo.url %>) center;background-size: cover;">
+                            <a href="#" <%= "data-toggle=modal data-target=#modal-login" unless current_user %> class="<%= 'save-button' if current_user %> pull-right" style="margin:10px;color:white;">
+                              <span class="fa-stack fa-lg">
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-star fa-lg fa-stack-1x"></i>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="item-title">
+                            <h4><a href="<%= property_path(property) %>"><%= property.titulo %></a></h4>
+                            <p class="team-color"><%= property.direccion %></p>
+                            <div class="col-md-7 col-sm-7 col-xs-7">
+                              <p><%= property.tipo.capitalize %></p>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-5">
+                              <p><%= property.habitaciones %> Hab</p>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
+                            <div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
+                          </div>
+                          <hr>
+                          <div class="item-title btm-part">
+                            <div class="row">
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p><%= money_without_cents_and_with_symbol property.precio %></p>
+                              </div>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <p class="team-color pull-right"><%= property.operacion.upcase %></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div><!-- end row -->
+                </div><!-- end container -->
+
+              </div>  <!-- end wide-2 -->
+            </div>  <!-- content -->
+          </div>
+        </div><!-- tab-content -->
+      </div><!-- tabs -->
+    </div>
+  </div>
+</div><!-- end Page Content -->
+
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+
+    function toggleFavorite(pid){
+
+    }
+
+    $(document).ready(function() {
+
+      window.properties =  <%= raw @properties.map{|p| p.attributes.merge(foto: p.foto_principal.photo.url, precio: money_without_cents_and_with_symbol(p.precio) )}.to_json %>
+
+      window.map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 15,
+        zoomControl: true,
+        streetViewControl: true,
+        zoomControlOptions:{
+            position: google.maps.ControlPosition.RIGHT_TOP
+        },
+        streetViewControlOptions:{
+            position: google.maps.ControlPosition.RIGHT_TOP
+        },
+        scrollwheel: false,
+        center: new google.maps.LatLng(-33.5346575, -70.5957313)
+      });
+
+      var i;
+      window.newMarkers = [];
+      window.bounds = new google.maps.LatLngBounds();
+      $.each(window.properties, function(i,p){
+        var pictureLabel = document.createElement("img");
+        pictureLabel.src = p.foto;
+        var boxText = document.createElement("div");
+        infoboxOptions = {
+            content: boxText,
+            disableAutoPan: false,
+            pixelOffset: new google.maps.Size(-100, 0),
+            zIndex: null,
+            alignBottom: true,
+            boxClass: "infobox-wrapper",
+            enableEventPropagation: true,
+            closeBoxMargin: "0px 0px -8px 0px",
+            closeBoxURL: "/assets/close-btn.png",
+            infoBoxClearance: new google.maps.Size(1, 1)
+        };
+
+        var marker = new MarkerWithLabel({
+            title: p.titulo,
+            position: new google.maps.LatLng(p.lat, p.lng),
+            map: window.map,
+            labelContent: '<div class="marker-loaded"><div class="map-marker"></div></div>',
+            labelAnchor: new google.maps.Point(50, 0),
+            labelClass: "marker-style"
+        });
+        bounds.extend(marker.position)
+        newMarkers.push(marker);
+        boxText.innerHTML =
+        '<div class="infobox-inner">' +
+        '<a href="/properties/' + p.id + '">' +
+        '<div class="infobox-image" style="position: relative">' +
+        '<img src="' + p.foto + '">' + '<div><span class="infobox-price">' + p.precio + '</span></div>' +
+        '</div>' +
+        '</a>' +
+        '<div class="infobox-description">' +
+        '<div class="infobox-title"><a href="/properties/'+ p.id +'">' + p.titulo + '</a></div>' +
+        '<div class="infobox-location">' + p.direccion + '</div>' +
+        '</div>' +
+        '</div>';
+        //Define the infobox
+        marker.infobox = new InfoBox(infoboxOptions);
+        google.maps.event.addListener(marker, 'click', (function(marker, i){
+            return function(){
+                for (h = 0; h < newMarkers.length; h++){
+                    newMarkers[h].infobox.close();
+                }
+                newMarkers[i].infobox.open(map, this);
+            }
+        })(marker, i));
+      })
+      map.fitBounds(bounds);
+
+    });
+  </script>
+<% end %>

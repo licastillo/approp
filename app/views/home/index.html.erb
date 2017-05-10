@@ -1,0 +1,420 @@
+<!-- Map -->
+<div id="map"></div>
+<!-- end Map -->
+
+<!-- Search Box -->
+<div class="search-box-wrapper">
+  <div class="search-box-inner">
+    <div class="container">
+      <div class="row">
+        <div class="search-box map">
+          <div class="search-title">
+            <h2>Busca una Propiedad</h2>
+            <h6 class="team-color">Solo toma unos minutos!</h6>
+          </div>
+          <form id="form-map" class="form-map form-search" action="search_result.html">
+            <p class="search-text col-xs-3">¿Donde?:</p>
+            <!-- <input type="text" class="" id="search-box-property-id" name="q" value=""> -->
+            <input type="text" class="form-control col-xs-6" id="address-map" name="q" placeholder="">
+            <span><i class="fa fa-search"></i></span>
+            <hr>
+            <p class="search-text-2 col-xs-3">Tipo:</p>
+            <select name="type" class="col-xs-9">
+              <option value="">Venta</option>
+              <option value="1">Arriendo</option>
+            </select>
+            <hr>
+            <button type="submit" class="btn btn-large btn-primary">Buscar</button>
+          </form><!-- /#form-map -->
+        </div><!-- /.search-box.map -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.search-box-inner -->
+</div>
+<!-- end Search Box -->
+
+<!-- Page Content -->
+<div id="page-content_home">
+  <div class="container">
+    <div class="explore">
+      <h2>Busca propiedades cercanas</h2>
+      <h5><i class="fa fa-map-marker"></i>Providencia <span class="team-color">Cambiar ubicación</span></h5>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <a href="search_result.html" class="exp-img" style="background:url(http://placehold.it/360X240) center;background-size: cover;">
+          <span class="filter"></span>
+          <div class="img-info">
+            <h3>Estudio</h3>
+            <h6>33 Propiedades</h6>
+            <span class="ffs-bs btn btn-small btn-primary">Explorar</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="search_result.html" class="exp-img" style="background:url(http://placehold.it/360X240) center;background-size: cover;">
+          <span class="filter"></span>
+          <div class="img-info">
+            <h3>Departamentos</h3>
+            <h6>33 Propiedades</h6>
+            <span class="ffs-bs btn btn-small btn-primary">Explorar</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="search_result.html" class="exp-img" style="background:url(http://placehold.it/360X240) center;background-size: cover;">
+          <span class="filter"></span>
+          <div class="img-info">
+            <h3>Casas</h3>
+            <h6>33 Propiedades</h6>
+            <span class="ffs-bs btn btn-small btn-primary">Explorar</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="search_result.html" class="exp-img" style="background:url(http://placehold.it/360X240) center;background-size: cover;">
+          <span class="filter"></span>
+          <div class="img-info">
+            <h3>Mansiones</h3>
+            <h6>33 Propiedades</h6>
+            <span class="ffs-bs btn btn-small btn-primary">Explorar</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-8">
+        <a href="search_result.html" class="exp-img" style="background:url(http://placehold.it/750X240) center;background-size: cover;">
+          <span class="filter"></span>
+          <div class="img-info">
+            <h3>Con piscina</h3>
+            <h6>33 Propiedades</h6>
+            <span class="ffs-bs btn btn-small btn-primary">Explorar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- end container -->
+  <!-- <div class="wide-1">
+    <div class="container rel-img">
+      <div class="col-md-8 col-sm-8 ab-us">
+        <h2>We are Suburb Real Estate Agency</h2>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 ex-block">
+            <h4><i class="fa fa-circle-o"></i>Wide Range of Properties</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+          <div class="col-md-6 col-sm-6 ex-block">
+            <h4><i class="fa fa-circle-o"></i>About us</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry five centuries, but also the leap.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 ex-block">
+            <h4><i class="fa fa-circle-o"></i>14 Agents for Your Service</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+          <div class="col-md-6 col-sm-6 ex-block">
+            <h4>&nbsp;</h4>
+            <p>Typesetting, remaining essentially unchanged. It was popularised in the 1960s.</p>
+          </div>
+        </div>
+        <span class="ffs-bs"><a href="property_page.html" class="btn btn-large">explore property</a></span>
+      </div>
+    </div>
+    <div class="ab-us-img col-md-4 col-sm-4"></div>
+  </div>
+
+  <div class="wide-2">
+    <div class="container">
+      <div class="explore">
+        <h2>Our New Exclusive Homes</h2>
+        <h5 class="team-color">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum has been the industry's standard dummy text ever since</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-6 prop">
+          <div class="wht-cont">
+            <div class="exp-img-2" style="background:url(http://placehold.it/255X200) center;background-size: cover;">
+              <span class="filter"></span>
+              <span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
+              <div class="overlay">
+                <div class="img-counter">23 Photo</div>
+              </div>
+            </div>
+            <div class="item-title">
+              <h4><a href="property_page.html">AVA High Line 89 - 916 Apartments</a></h4>
+              <p class="team-color">525 W 28th St, New York, NY 10001</p>
+              <div class="col-md-7 col-sm-7 col-xs-7">
+                <p>Studio - 2 bd</p>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <p>86 m<span class="rank">2</span></p>
+              </div>
+              <div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
+              <div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
+            </div>
+            <hr>
+            <div class="item-title btm-part">
+              <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <p>$5,000,000</p>
+                  <p class="team-color">FOR SALE</p>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 favorite">
+                  <div class="bookmark" data-bookmark-state="empty">
+                    <span class="title-add">Add to bookmark</span>
+                  </div>
+                  <div class="compare" data-compare-state="empty">
+                    <span class="plus-add">Add to compare</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 prop">
+          <div class="wht-cont">
+            <div class="exp-img-2" style="background:url(http://placehold.it/255X200) center;background-size: cover;">
+              <span class="filter"></span>
+              <span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
+              <div class="overlay">
+                <div class="img-counter">23 Photo</div>
+              </div>
+            </div>
+            <div class="item-title">
+              <h4><a href="property_page.html">Prism at Park Avenue South Apar</a></h4>
+              <p class="team-color">525 W 28th St, New York, NY 10001</p>
+              <div class="col-md-7 col-sm-7 col-xs-7">
+                <p>Studio - 2 bd</p>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <p>86 m<span class="rank">2</span></p>
+              </div>
+              <div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
+              <div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
+            </div>
+            <hr>
+            <div class="item-title btm-part">
+              <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <p>$5,000,000</p>
+                  <p class="team-color">FOR SALE</p>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 favorite">
+                  <div class="bookmark" data-bookmark-state="empty">
+                    <span class="title-add">Add to bookmark</span>
+                  </div>
+                  <div class="compare" data-compare-state="empty">
+                    <span class="plus-add">Add to compare</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 prop">
+          <div class="wht-cont">
+            <div class="exp-img-2" style="background:url(http://placehold.it/255X200) center;background-size: cover;">
+              <span class="filter"></span>
+              <span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
+              <div class="overlay">
+                <div class="img-counter">23 Photo</div>
+              </div>
+            </div>
+            <div class="item-title">
+              <h4><a href="property_page.html">Avalon Morningside Park Apartment</a></h4>
+              <p class="team-color">525 W 28th St, New York, NY 10001</p>
+              <div class="col-md-7 col-sm-7 col-xs-7">
+                <p>Studio - 2 bd</p>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <p>86 m<span class="rank">2</span></p>
+              </div>
+              <div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
+              <div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
+            </div>
+            <hr>
+            <div class="item-title btm-part">
+              <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <p>$5,000,000</p>
+                  <p class="team-color">FOR SALE</p>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 favorite">
+                  <div class="bookmark" data-bookmark-state="empty">
+                    <span class="title-add">Add to bookmark</span>
+                  </div>
+                  <div class="compare" data-compare-state="empty">
+                    <span class="plus-add">Add to compare</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 prop">
+          <div class="wht-cont">
+            <div class="exp-img-2" style="background:url(http://placehold.it/255X200) center;background-size: cover;">
+              <span class="filter"></span>
+              <span class="ffs-bs"><label for="op" class="btn btn-small btn-primary">browse photos</label></span>
+              <div class="overlay">
+                <div class="img-counter">23 Photo</div>
+              </div>
+            </div>
+            <div class="item-title">
+              <h4><a href="property_page.html">Prism at Park Avenue South Apar</a></h4>
+              <p class="team-color">525 W 28th St, New York, NY 10001</p>
+              <div class="col-md-7 col-sm-7 col-xs-7">
+                <p>Studio - 2 bd</p>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                <p>86 m<span class="rank">2</span></p>
+              </div>
+              <div class="col-md-7 col-sm-7 col-xs-7 lft-brd"></div>
+              <div class="col-md-5 col-sm-5 col-xs-5 lft-brd"></div>
+            </div>
+            <hr>
+            <div class="item-title btm-part">
+              <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <p>$5,000,000</p>
+                  <p class="team-color">FOR SALE</p>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 favorite">
+                  <div class="bookmark" data-bookmark-state="empty">
+                    <span class="title-add">Add to bookmark</span>
+                  </div>
+                  <div class="compare" data-compare-state="empty">
+                    <span class="plus-add">Add to compare</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ffs-bs bottom"><a href="property_page.html" class="btn btn-default btn-large">explore property</a></span>
+  </div>
+  <div class="wide-3">
+    <div class="explore">
+      <h2>Meet the Suburb Team</h2>
+      <h5 class="team-color">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum has been the industry's standard dummy text ever since</h5>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="item col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+          <div class="image" style="background:url(http://placehold.it/360X450) center">
+            <div class="img-info">
+              <div class="row">
+                <div class="half col-xs-7">
+                  <h3><a href="agent_profile.html">Lisa Milk</a></h3>
+                  <h6>Realtor</h6>
+                </div>
+                <div class="half col-xs-5 info-right">
+                  <p></p>
+                </div>
+                <hr>
+              </div>
+              <p>“Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry”</p>
+            </div>
+          </div>
+        </div>
+        <div class="item col-md-4 col-sm-6 col-xs-12">
+          <div class="image" style="background:url(http://placehold.it/360X450) center">
+            <div class="img-info">
+              <div class="row">
+                <div class="half col-xs-7">
+                  <h3><a href="agent_profile.html">Jason Satti</a></h3>
+                  <h6>Superhero</h6>
+                </div>
+                <div class="half col-xs-5 info-right">
+                  <p>415 Deals Done</p>
+                </div>
+                <hr>
+              </div>
+              <p>“Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ffs-bs"><a href="about_us.html" class="btn btn-default btn-large">more about us</a></span>
+  </div>
+  <div class="container">
+    <section class="block testimonials">
+      <header class="center">
+        <h2 class="no-border">We love Suburb Work!</h2>
+      </header>
+      <div class="owl-carousel testimonials-carousel">
+        <blockquote class="item">
+          <aside class="cite">
+            <p class="team-color">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"</p>
+          </aside>
+          <figure>
+            <div class="image">
+              <img src="http://placehold.it/55X55" alt="">
+            </div>
+            <p>Johan Nordquist</p>
+            <p class="team-color">Someone From Company</p>
+          </figure>
+        </blockquote>
+        <blockquote class="item">
+          <aside class="cite">
+            <p class="team-color">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"</p>
+          </aside>
+          <figure>
+            <div class="image">
+              <img src="http://placehold.it/55X55" alt="">
+            </div>
+            <p>Sara Genergy</p>
+            <p class="team-color">Someone From Company</p>
+          </figure>
+        </blockquote>
+        <blockquote class="item">
+          <aside class="cite">
+            <p class="team-color">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"</p>
+          </aside>
+          <figure>
+            <div class="image">
+              <img src="http://placehold.it/55X55" alt="">
+            </div>
+            <p>Sara Strawberry</p>
+            <p class="team-color">Someone From Company</p>
+          </figure>
+        </blockquote>
+      </div>
+    </section>
+  </div> -->
+
+  <div class="wide-3">
+    <div class="container">
+    <div class="logo-cont">
+      <div class="logos" style="background:url(http://placehold.it/190X80) center no-repeat"></div>
+    </div>
+    <div class="logo-cont">
+      <div class="logos" style="background:url(http://placehold.it/190X80) center no-repeat"></div>
+    </div>
+    <div class="logo-cont">
+      <div class="logos" style="background:url(http://placehold.it/190X80) center no-repeat"></div>
+    </div>
+    <div class="logo-cont">
+      <div class="logos" style="background:url(http://placehold.it/190X80) center no-repeat"></div>
+    </div>
+    <div class="logo-cont">
+      <div class="logos" style="background:url(http://placehold.it/190X80) center no-repeat"></div>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- end wide-3 -->
+</div>
+<!-- end Page Content -->
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    _latitude = -33.5346575;
+    _longitude = -70.5957313;
+    createHomepageGoogleMap(_latitude,_longitude);
+  </script>
+<% end %>

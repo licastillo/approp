@@ -1,0 +1,13 @@
+/*
+  *= require bootstrap
+  *= require owl.carousel
+  *= require selectize
+  *= require font-awesome
+  *= require jquery.fileupload
+  *= require style
+  *= require_self
+*/
+
+.ui-loader{
+  display: none!important;
+}
